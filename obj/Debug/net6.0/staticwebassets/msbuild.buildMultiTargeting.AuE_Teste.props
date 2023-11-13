@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\AuE_Teste.props" />
+</Project>

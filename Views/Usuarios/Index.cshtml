@@ -1,0 +1,101 @@
+﻿@model IEnumerable<AuE_Teste.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Início</h1>
+
+
+
+<p>
+    <a asp-action="Create">Cadastrar Novo Usuário</a>
+</p>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th> 
+            <th>
+                @Html.DisplayNameFor(model => model.Sexo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cidade)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td> 
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexo)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cidade)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@* @if (Model !=null && ViewBag.MostrarLista.HasValue && ViewBag.MostrarLista.Value)
+{
+    if (Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Sexo</th>
+                    <th>Data</th>
+                    <th>Cidade</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var usuario in Model)
+                {
+                    if (usuario != null)
+                    {
+                        <tr>
+                            <td>@usuario.Id</td>
+                            <td>@usuario.Nome</td>
+                            <td>@usuario.Sexo</td>
+                            <td>@usuario.Data.ToShortDateString()</td>
+                            <td>@usuario.Cidade</td>
+                            <td>
+                                <a asp-action="Details" asp-route-id="@usuario.Id">Detalhes</a> |
+                                <a asp-action="Edit" asp-route-id="@usuario.Id">Editar</a> |
+                                <a asp-action="Delete" asp-route-id="@usuario.Id">Excluir</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Nenhum usuário encontrado.</p>
+    }
+} *@

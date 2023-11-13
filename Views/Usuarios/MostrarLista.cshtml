@@ -1,0 +1,41 @@
+﻿@model IEnumerable<AuE_Teste.Models.Usuario>
+
+@{
+    ViewData["Title"] = "MostrarLista";
+}
+
+<h1>Usuários Cadastrados</h1>
+
+@if (ViewBag.MostrarLista.HasValue && ViewBag.MostrarLista.Value)
+{
+    if (Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Sexo</th>
+                    <th>Data do Cadastro</th>
+                    <th>Cidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var usuario in Model)
+                {
+                    <tr>
+                        <td>@usuario.Id</td>
+                        <td>@usuario.Nome</td>
+                        <td>@usuario.Sexo</td>
+                        <td>@usuario.Data.ToShortDateString()</td>
+                        <td>@usuario.Cidade</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Nenhum usuário encontrado.</p>
+    }
+}
