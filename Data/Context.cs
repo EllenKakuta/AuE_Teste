@@ -10,5 +10,6 @@ namespace AuE_Teste.Data
         }
 
         public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<EstatisticasViewModel> Estatisticas { get; set; }
     }
 }

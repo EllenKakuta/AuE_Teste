@@ -20,6 +20,7 @@ namespace AuE_Teste.Models
 
         [Display(Name = "Data")]
         [Column("Data")]
+        [DataType(DataType.Date)]
         public DateTime Data { get; set; }
 
         [Display(Name = "Cidade")]

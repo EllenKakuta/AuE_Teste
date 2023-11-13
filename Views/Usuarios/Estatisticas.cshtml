@@ -1,0 +1,37 @@
+﻿@model List<EstatisticasViewModel>
+
+<h2>Estatísticas por Cidade</h2>
+
+@foreach (var estatistica in Model)
+{
+    <br><h3>@estatistica.Cidade</h3>
+    <p>Total de Cadastros: @estatistica.TotalCadastros</p>
+    <div>
+    <table>
+        <thead>
+            <tr>
+                <th>Sexo</th>
+                <th>Quantidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var sexoQuantidade in estatistica.QuantidadePorSexo)
+            {
+                <tr>
+                    <td>@sexoQuantidade.Sexo</td>
+                    <td>@sexoQuantidade.Quantidade</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+    @if (Model.Last() == estatistica)
+    {
+        <div>
+            <br><a asp-action="Index">Voltar para a lista completa de cadastros</a>
+        </div>
+    }
+        
+   
+}
+

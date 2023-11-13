@@ -199,7 +199,28 @@ namespace AuE_Teste.Controllers
         }
 
 
-        [HttpGet]
+      
+
+
+        public IActionResult Estatisticas()
+        {
+            var estatisticas = _context.Usuario
+                .GroupBy(u => u.Cidade)
+                .Select(g => new EstatisticasViewModel
+                {
+                    Cidade = g.Key,
+                    TotalCadastros = g.Count(),
+                    QuantidadePorSexo = g.GroupBy(u => u.Sexo)
+                                         .Select(s => new SexoQuantidadeViewModel
+                                         {
+                                             Sexo = s.Key,
+                                             Quantidade = s.Count()
+                                         })
+                })
+                .ToList();
+
+            return View(estatisticas);
+        }
 
         public IActionResult MostrarLista()
         {
@@ -211,6 +232,7 @@ namespace AuE_Teste.Controllers
             // Passa a lista de usuários para a view
             return View("Index", usuarios);
         }
+
 
     }
 }
